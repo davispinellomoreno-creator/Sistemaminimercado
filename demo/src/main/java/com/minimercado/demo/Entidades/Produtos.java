@@ -1,5 +1,6 @@
 package com.minimercado.demo.Entidades;
 
+import com.minimercado.demo.Status.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,6 +24,8 @@ public class Produtos {
     @Column(name = "nome",unique = true)
     private int validade;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
 
 
