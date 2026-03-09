@@ -1,5 +1,6 @@
 package com.minimercado.demo.Controller;
 
+import com.minimercado.demo.Dto.MercadoDto;
 import com.minimercado.demo.Entidades.Produtos;
 import com.minimercado.demo.Service.MercadoService;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,11 @@ public class MercadoController {
     public MercadoController(MercadoService serviceproduto, Produtos produto) {
         this.serviceproduto = serviceproduto;
         this.produto = produto;
+    }
+
+    @PostMapping
+    public MercadoDto criarProduto(@RequestBody MercadoDto dto) {
+        return serviceproduto.salvarProduto(dto);
     }
 
     @GetMapping
