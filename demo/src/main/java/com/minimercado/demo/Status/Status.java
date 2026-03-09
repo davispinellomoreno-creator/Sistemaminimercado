@@ -1,7 +1,8 @@
 package com.minimercado.demo.Status;
 
 public enum Status {
+    EM_PRAZO,
     VENCIDO,
-    EM_VALIDADE,
+    PROXIMO_DO_VENCIMENTO
 
 }
