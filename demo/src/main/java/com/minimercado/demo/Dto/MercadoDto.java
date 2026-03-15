@@ -1,5 +1,6 @@
 package com.minimercado.demo.Dto;
 
+import com.minimercado.demo.Status.Status;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ public class MercadoDto {
     private Double preco;
         private LocalDate dataValidade;
         private long id;
+    private Status status;
 
     public MercadoDto() {
     }
