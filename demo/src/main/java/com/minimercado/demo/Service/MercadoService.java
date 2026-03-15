@@ -1,6 +1,7 @@
 package com.minimercado.demo.Service;
 
 
+import com.minimercado.demo.Dto.MercadoDto;
 import com.minimercado.demo.Entidades.Produtos;
 import com.minimercado.demo.Repository.MercadoRepository;
 
@@ -13,7 +14,7 @@ public class MercadoService {
         this.repositorymercado = repositorymercado;
     }
 
-    public void salvarProduto(Produtos produto) {
+    public void salvarProduto(MercadoDto produto) {
 
         repositorymercado.saveAndFlush(produto);
     }

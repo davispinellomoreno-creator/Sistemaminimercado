@@ -19,10 +19,7 @@ public class MercadoController {
         this.produto = produto;
     }
 
-    @PostMapping
-    public MercadoDto criarProduto(@RequestBody MercadoDto dto) {
-        return serviceproduto.salvarProduto(dto);
-    }
+
 
     @GetMapping
     public ResponseEntity<Produtos> buscarProduto(@RequestParam Long id) {
@@ -30,8 +27,8 @@ public class MercadoController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> salvarProduto(@RequestBody Produtos produto) {
-        serviceproduto.salvarProduto(produto);
+    public ResponseEntity<Void> salvarProduto(@RequestBody MercadoDto produto) {
+    serviceproduto.salvarProduto(produto);
 
         return ResponseEntity.ok().build();
     }
