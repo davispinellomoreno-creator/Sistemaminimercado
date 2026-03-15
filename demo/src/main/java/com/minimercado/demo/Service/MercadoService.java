@@ -14,9 +14,13 @@ public class MercadoService {
         this.repositorymercado = repositorymercado;
     }
 
-    public void salvarProduto(MercadoDto produto) {
+    public Produtos salvarProduto(MercadoDto produtoDto) {
 
-        repositorymercado.saveAndFlush(produto);
+        Produtos produto = new Produtos();
+        produto.setNome(produtoDto.getNome());
+        produto.setPreco(produtoDto.getPreco());
+
+        return repositorymercado.save(produto);
     }
 
     public Produtos buscarProduto(Long id) {

@@ -24,6 +24,9 @@ public class Produtos {
     @Column(name = "nome",unique = true)
     private int validade;
 
+    @Column(name = "nome",unique = true)
+    private Double preco;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
