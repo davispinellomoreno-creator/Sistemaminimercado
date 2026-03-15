@@ -11,6 +11,7 @@ public class MercadoDto {
     private String nome;
     private Double preco;
         private LocalDate dataValidade;
+        private long id;
 
     public MercadoDto() {
     }

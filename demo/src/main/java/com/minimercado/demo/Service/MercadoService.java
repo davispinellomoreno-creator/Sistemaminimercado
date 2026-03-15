@@ -23,34 +23,40 @@ public class MercadoService {
         return repositorymercado.save(produto);
     }
 
-    public Produtos buscarProduto(Long id) {
-        return repositorymercado.findById(id)
-                .orElseThrow(
-                        () -> new RuntimeException("Produto não encontrado")
-                );
+    public MercadoDto buscarProduto(Long id) {
 
+        Produtos produto = repositorymercado.findById(id)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+
+        MercadoDto dto = new MercadoDto();
+        dto.setId(produto.getId());
+        dto.setNome(produto.getNome());
+        dto.setPreco(produto.getPreco());
+
+        return dto;
     }
 
     public void deletarProduto(Long id) {
         repositorymercado.deleteById(id);
-
     }
 
-    public Produtos atualizarProdutosPorId(Long id, Produtos produto) {
-        Produtos profutoEntity = repositorymercado.findById(id).
-                orElseThrow(
-                        () -> new RuntimeException("Produto não encontrado")
-                );
-        Produtos produtoAtualizado = Produtos.builder()
-                .id(produto.getId() != null
-                        ? produto.getId() : profutoEntity.getId())
-                .nome((produto.getNome() != null ? produto.getNome() : profutoEntity.getNome())
-                )
 
-                .build();
+    public MercadoDto atualizarProdutosPorId(Long id, MercadoDto produtoDto) {
 
+        Produtos produtoEntity = repositorymercado.findById(id)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
-        return repositorymercado.save(produto);
+        produtoEntity.setNome(produtoDto.getNome());
+        produtoEntity.setPreco(produtoDto.getPreco());
+
+        Produtos produtoSalvo = repositorymercado.save(produtoEntity);
+
+        MercadoDto dto = new MercadoDto();
+        dto.setId(produtoSalvo.getId());
+        dto.setNome(produtoSalvo.getNome());
+        dto.setPreco(produtoSalvo.getPreco());
+
+        return dto;
     }
 
 }
