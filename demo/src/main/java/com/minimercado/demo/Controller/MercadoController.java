@@ -12,38 +12,34 @@ import org.springframework.web.service.annotation.GetExchange;
 public class MercadoController {
 
     private final MercadoService serviceproduto;
-    private final Produtos produto;
+
 
     public MercadoController(MercadoService serviceproduto, Produtos produto) {
         this.serviceproduto = serviceproduto;
-        this.produto = produto;
+
     }
 
 
-
-    @GetMapping
-    public ResponseEntity<Produtos> buscarProduto(@RequestParam Long id) {
-        return ResponseEntity.ok(serviceproduto.buscarProduto(id));
+    @GetMapping("/{id}")
+    public MercadoDto buscarProduto(@PathVariable Long id) {
+        return serviceproduto.buscarProduto(id);
     }
 
     @PostMapping
-    public ResponseEntity<Void> salvarProduto(@RequestBody MercadoDto produto) {
-    serviceproduto.salvarProduto(produto);
-
-        return ResponseEntity.ok().build();
+    public MercadoDto salvarProduto(@RequestBody MercadoDto produto) {
+        return serviceproduto.salvarProduto(produto);
     }
 
-    @PutMapping
-    public ResponseEntity<Produtos> atualizarProduto(@RequestBody Produtos produto, Long id) {
-        serviceproduto.atualizarProdutosPorId(id, produto);
+    @PutMapping("/{id}")
+    public MercadoDto atualizarProduto(
+            @PathVariable Long id,
+            @RequestBody MercadoDto produto) {
 
-        return ResponseEntity.ok().build();
+        return serviceproduto.atualizarProdutosPorId(id, produto);
     }
 
-    @DeleteMapping
-    public ResponseEntity<Produtos> atualizarProduto(@RequestParam Long id) {
+    @DeleteMapping("/{id}")
+    public void deletarProduto(@PathVariable Long id) {
         serviceproduto.deletarProduto(id);
-
-        return ResponseEntity.ok().build();
     }
 }
