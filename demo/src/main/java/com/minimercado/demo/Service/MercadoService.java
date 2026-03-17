@@ -19,15 +19,19 @@ public class MercadoService {
         Produtos produto = new Produtos();
         produto.setNome(produtoDto.getNome());
         produto.setPreco(produtoDto.getPreco());
+        produto.setStatus(produtoDto.getStatus());
+
+
 
         Produtos salvo = repositorymercado.save(produto);
 
-        MercadoDto dto = new MercadoDto();
-        dto.setId(salvo.getId());
-        dto.setNome(salvo.getNome());
-        dto.setPreco(salvo.getPreco());
+        MercadoDto resposta = new MercadoDto();
+        resposta.setId(salvo.getId());
+        resposta.setNome(salvo.getNome());
+        resposta.setPreco(salvo.getPreco());
+        resposta.setStatus(salvo.getStatus());
 
-        return dto;
+        return resposta;
     }
 
     public MercadoDto buscarProduto(Long id) {
@@ -39,6 +43,7 @@ public class MercadoService {
         dto.setId(produto.getId());
         dto.setNome(produto.getNome());
         dto.setPreco(produto.getPreco());
+        dto.setStatus(produto.getStatus());
 
         return dto;
     }
@@ -62,6 +67,7 @@ public class MercadoService {
         dto.setId(produtoSalvo.getId());
         dto.setNome(produtoSalvo.getNome());
         dto.setPreco(produtoSalvo.getPreco());
+        dto.setStatus(produtoSalvo.getStatus());
 
         return dto;
     }
