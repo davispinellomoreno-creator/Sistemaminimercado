@@ -21,10 +21,10 @@ public class Produtos {
     @Column(name = "nome",unique = true)
     private String nome;
 
-    @Column(name = "nome",unique = true)
+    @Column(name = "validade",unique = true)
     private int validade;
 
-    @Column(name = "nome",unique = true)
+    @Column(name = "Preço",unique = true)
     private Double preco;
 
     @Enumerated(EnumType.STRING)
