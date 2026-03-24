@@ -4,8 +4,9 @@ package com.minimercado.demo.Service;
 import com.minimercado.demo.Dto.MercadoDto;
 import com.minimercado.demo.Entidades.Produtos;
 import com.minimercado.demo.Repository.MercadoRepository;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class MercadoService {
 
     private final MercadoRepository repositorymercado;
