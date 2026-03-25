@@ -12,12 +12,11 @@ import org.springframework.web.service.annotation.GetExchange;
 public class MercadoController {
 
     private final MercadoService serviceproduto;
-    private final Produtos produto;
 
 
-    public MercadoController(MercadoService serviceproduto, Produtos produto) {
+
+    public MercadoController(MercadoService serviceproduto) {
         this.serviceproduto = serviceproduto;
-        this.produto = produto;
 
 
     }
